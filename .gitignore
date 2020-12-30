@@ -1,0 +1,10 @@
+.DS_Store
+jest/*
+coverage
+config.js
+node_modules
+build/
+.env*
+config/
+.vs
+.adminbro/

@@ -1,0 +1,7 @@
+org: calebf
+app: fetchme-api
+component: express
+name: express-starter
+
+inputs:
+  src: ./
