@@ -12,14 +12,14 @@ const getRequestById = async (id) => {
     return JSON.stringify(fetchRequests[0], null, 4);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    return "Server Error";
   }
 };
 /**
  * Return requests by User with given userid
  * @param  {String} userid
  */
-const userRequestsById = async (userid) => {
+const userRequestsById = async (id) => {
   // find user given by userid
   const user = await User.find({ userid: id }).limit(1);
 
@@ -31,7 +31,7 @@ const userRequestsById = async (userid) => {
       .select("-response -_id");
     return JSON.stringify(fetchRequests, null, 4);
   }
-  res.json([]);
+  return [];
 };
 
 module.exports = { getRequestById, userRequestsById };

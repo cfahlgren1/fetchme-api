@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const express = require('express');
+const express = require("express");
 const connectDB = require("./src/database");
 const morgan = require("morgan");
 const app = express();

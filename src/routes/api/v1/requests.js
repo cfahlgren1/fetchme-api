@@ -18,7 +18,7 @@ router.get("/:id", async (req, res) => {
 router.get("/user/:id", async (req, res) => {
   const id = req.params.id;
   res.header("Content-Type", "application/json");
-  res.send(await requests.userRequestsById(id));
+  res.send(await requestController.userRequestsById(id));
 });
 
 module.exports = router;

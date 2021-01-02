@@ -33,7 +33,6 @@ const FetchRequestSchema = new mongoose.Schema({
   },
 });
 
-module.exports = FetchRequest = mongoose.model(
-  "fetchrequest",
-  FetchRequestSchema
-);
+const FetchRequest = mongoose.model("fetchrequest", FetchRequestSchema);
+
+module.exports = FetchRequest;
