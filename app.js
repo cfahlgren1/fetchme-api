@@ -4,7 +4,7 @@ const express = require("express");
 const connectDB = require("./src/database");
 const morgan = require("morgan");
 const app = express();
-const cors = require('cors');
+const cors = require("cors");
 
 // log requests using morgan
 app.use(morgan("combined"));
