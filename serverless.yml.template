@@ -5,3 +5,5 @@ name: express-starter
 
 inputs:
   src: ./
+  env: 
+    MONGO_HOST: 
