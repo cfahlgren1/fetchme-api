@@ -7,3 +7,4 @@ inputs:
   src: ./
   env: 
     MONGO_HOST: 
+    SENTRY_DSN:
