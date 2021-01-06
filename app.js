@@ -1,10 +1,29 @@
 "use strict";
-
+// dependencies
 const express = require("express");
+const Sentry = require('@sentry/node');
+const Tracing = require('@sentry/tracing');
 const connectDB = require("./src/database");
 const morgan = require("morgan");
-const app = express();
 const cors = require("cors");
+
+// init app
+const app = express();
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  integrations: [
+    // enable HTTP calls tracing
+    new Sentry.Integrations.Http({ tracing: true }),
+    // enable Express.js middleware tracing
+    new Tracing.Integrations.Express({ app }),
+  ],
+  tracesSampleRate: 1.0,
+});
+
+app.use(Sentry.Handlers.requestHandler());
+// TracingHandler creates a trace for every incoming request
+app.use(Sentry.Handlers.tracingHandler());
 
 // log requests using morgan
 app.use(morgan("combined"));
@@ -26,6 +45,17 @@ app.use("/api/v1/teams", require("./src/routes/api/v1/teams"));
 
 app.get("/", (req, res) => {
   res.send("Hello World! - FetchMe API");
+});
+
+// The error handler must be before any other error middleware and after all controllers
+app.use(Sentry.Handlers.errorHandler());
+
+// Optional fallthrough error handler
+app.use(function onError(err, req, res, next) {
+  // The error id is attached to `res.sentry` to be returned
+  // and optionally displayed to the user for support.
+  res.statusCode = 500;
+  res.end('Server Error');
 });
 
 // start server
