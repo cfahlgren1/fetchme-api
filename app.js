@@ -1,8 +1,8 @@
 "use strict";
 // dependencies
 const express = require("express");
-const Sentry = require('@sentry/node');
-const Tracing = require('@sentry/tracing');
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
 const connectDB = require("./src/database");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -55,7 +55,7 @@ app.use(function onError(err, req, res, next) {
   // The error id is attached to `res.sentry` to be returned
   // and optionally displayed to the user for support.
   res.statusCode = 500;
-  res.end('Server Error');
+  res.end("Server Error");
 });
 
 // start server
