@@ -11,6 +11,7 @@ router.get("/:id", async (req, res) => {
   res.header("Content-Type", "application/json");
   const fetchRequest = await requestController.getRequestById(id);
 
+  // if fetch request,
   if (fetchRequest) {
     res.send(fetchRequest);
     return;
