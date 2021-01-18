@@ -8,6 +8,7 @@ const User = require("../models/User");
  */
 const getRequestById = async (id) => {
   try {
+    // get fetch me request
     const fetchRequests = await FetchRequest.find({ hash: id }).select("-_id"); // search for request with given id
     return JSON.stringify(fetchRequests[0], null, 4);
   } catch (err) {

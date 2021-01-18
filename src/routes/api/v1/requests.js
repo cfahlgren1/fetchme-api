@@ -9,7 +9,13 @@ const requestController = require("../../../controllers/requestController");
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   res.header("Content-Type", "application/json");
-  res.send(await requestController.getRequestById(id));
+  const fetchRequest = await requestController.getRequestById(id);
+
+  if (fetchRequest) {
+    res.send(fetchRequest);
+    return;
+  }
+  res.status(404).send("404 Not Found");
 });
 
 // @route     GET api/v1/requests/:id
