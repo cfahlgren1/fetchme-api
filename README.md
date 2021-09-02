@@ -13,9 +13,3 @@ The API service for Fetch Me Slack App 💻
     $ git clone https://github.com/cfahlgren1/fetchme-worker
     $ cd fetchme-api
     $ npm run dev
-
-## Architecture
-
-![](https://i.ibb.co/c889nfF/lambda-architecture.png)
-
-> The use of DynamoDB and Redis is not fully built out yet
