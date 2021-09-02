@@ -17,3 +17,5 @@ The API service for Fetch Me Slack App 💻
 ## Architecture
 
 ![](https://i.ibb.co/c889nfF/lambda-architecture.png)
+
+> The use of DynamoDB and Redis is not fully built out yet
